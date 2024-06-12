@@ -1,0 +1,23 @@
+/* src/components/Contact.module.css */
+
+.phonebook {
+  padding: 15px;
+  text-align: center;
+}
+
+.wrapper {
+  width: 350px;
+  background: rgb(248, 246, 247);
+  background: rgb(223, 217, 220);
+  padding: 15px;
+  border-radius: 10px;
+  color: rgb(6, 1, 8);
+}
+
+/* Add this new style to center the elements */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+}
