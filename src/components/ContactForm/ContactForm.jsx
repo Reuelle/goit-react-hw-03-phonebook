@@ -50,7 +50,6 @@ class PhonebooksForm extends Component {
             value={name}
             onChange={handleChange}
             placeholder="Enter name"
-            pattern="^[a-zA-Zа-яА-Я]+((['-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan."
             required
           />
@@ -63,7 +62,6 @@ class PhonebooksForm extends Component {
             value={number}
             onChange={handleChange}
             placeholder="Enter number"
-             pattern="\+?\d{1,4}?[-. ]?\(?\d{1,3}?\)?[-. ]?\d{1,4}[-. ]?\d{1,4}[-. ]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
