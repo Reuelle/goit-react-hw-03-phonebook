@@ -1,6 +1,7 @@
 /* src/components/Contact.module.css */
 
 .phonebook {
+   display: flex;
   justify-content: center;
   padding: 15px;
   text-align: center;
