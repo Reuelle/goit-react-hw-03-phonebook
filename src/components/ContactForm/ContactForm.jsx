@@ -1,32 +1,48 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import inititalState from './InitialState';
 import styles from './ContactForm.module.css';
 
 class PhonebooksForm extends Component {
   state = { ...inititalState };
 
+  componentDidMount() {
+    const savedContacts = localStorage.getItem('contacts');
+    if (savedContacts) {
+      this.setState({ contacts: JSON.parse(savedContacts) });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { onSubmit } = this.props;
-    const { name, number } = this.state;
-
-    console.log('Form submitted:', this.state); // Log form submission
+    const { name, number, contacts } = this.state;
 
     if (!name || !number) {
       alert('Please fill in this field');
       return;
     }
 
-    const result = onSubmit({ ...this.state });
+    const newContact = { name, number };
+    const result = onSubmit(newContact);
+
     if (result) {
+      this.setState({
+        contacts: [...contacts, newContact],
+      });
       this.reset();
     }
   };
 
   reset() {
     this.setState({ ...inititalState });
-    console.log('Form reset:', inititalState); // Log form reset
   }
 
   handleChange = ({ target }) => {
@@ -34,7 +50,6 @@ class PhonebooksForm extends Component {
     this.setState({
       [name]: value,
     });
-    console.log(`Input changed: ${name} = ${value}`); // Log input changes
   };
 
   render() {
