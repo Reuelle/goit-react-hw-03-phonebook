@@ -92,7 +92,7 @@ class Phonebooks extends Component {
     const isContacts = Boolean(contacts.length);
 
     return (
-      <div classname={styles.center-container}>
+      <div classname={styles['center-container']}>
       <div className={styles.wrapper}>
         <div className={styles.block}>
           <h1>Phonebook</h1>
