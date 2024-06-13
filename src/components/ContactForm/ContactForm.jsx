@@ -1,9 +1,6 @@
-
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import inititalState from './InitialState';
-
 import styles from './ContactForm.module.css';
 
 class PhonebooksForm extends Component {
@@ -13,6 +10,8 @@ class PhonebooksForm extends Component {
     e.preventDefault();
     const { onSubmit } = this.props;
     const { name, number } = this.state;
+
+    console.log('Form submitted:', this.state); // Log form submission
 
     if (!name || !number) {
       alert('Please fill in this field');
@@ -27,6 +26,7 @@ class PhonebooksForm extends Component {
 
   reset() {
     this.setState({ ...inititalState });
+    console.log('Form reset:', inititalState); // Log form reset
   }
 
   handleChange = ({ target }) => {
@@ -34,6 +34,7 @@ class PhonebooksForm extends Component {
     this.setState({
       [name]: value,
     });
+    console.log(`Input changed: ${name} = ${value}`); // Log input changes
   };
 
   render() {
@@ -74,8 +75,11 @@ class PhonebooksForm extends Component {
   }
 }
 
-export default PhonebooksForm;
-
 PhonebooksForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
+
+export default PhonebooksForm;
+
+
+  
